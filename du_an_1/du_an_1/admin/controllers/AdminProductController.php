@@ -146,6 +146,45 @@ class AdminProductController
       header("Location: " . BASE_URL_ADMIN . "?act=san-pham");
     }
   }
+
+  public function detailSanPham()
+  {
+    $id = $_GET["id_san_pham"];
+    $listdanhmuc = $this->modelDanhMuc->getAllDanhMuc();
+    $sanpham = $this->modelSanPham->getOneSanPham($id);
+    if ($sanpham) {
+      require_once "./views/sanpham/detailSanPham.php";
+    } else {
+      header("Location: " . BASE_URL_ADMIN . "?act=san-pham");
+    }
+  }
+
+  public function updateTrangThaiBinhLuan(){
+    $id = $_POST["id_binh_luan"];
+    $name_view = $_POST["name_view"];
+    $id_khach_hang = $_POST["id_khach_hang"];
+    $binhluan = $this->modelSanPham->getDetailBinhLuan($id);
+
+    if($binhluan){
+      $trang_thai_update="";
+      if($binhluan["trang_thai"] == 1){
+        $trang_thai_update = 2;
+      }
+      else{
+        $trang_thai_update = 1;
+      }
+      $status = $this->modelSanPham->updateTrangThaiBinhLuan($id, $trang_thai_update);
+      if($status){
+        if($name_view == "detail_khach"){
+          header("Location: " . BASE_URL_ADMIN . "?act=chi-tiet-khach-hang&id_khach_hang=" . $id_khach_hang);
+        }
+      }
+    }
+  }
+
+  public function home(){
+    require_once "./views/home.php";
+  }
 }
 
 ?>

@@ -39,4 +39,17 @@ function deleteFile($file){
     unlink($pathDelete);
   }
 }
+
+//formatDate
+
+  function formatFate($date){
+    return date("d-m-Y", strtotime($date));
+  }
+
+  function checkLoginAdmin(){
+    if(!isset($_SESSION["user_admin"])){
+      require_once "./views/auth/formLogin.php";
+      exit();
+    }
+  }
 ?>

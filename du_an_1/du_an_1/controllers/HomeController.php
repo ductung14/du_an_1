@@ -8,7 +8,7 @@ class HomeController
       $this -> modelProduct = new Product();
     }
     public function home(){
-      echo " Đây là home";
+      require_once "./views/home.php";
     }
 
     public function trangChu(){
