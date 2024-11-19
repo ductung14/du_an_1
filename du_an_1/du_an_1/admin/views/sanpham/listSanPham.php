@@ -62,13 +62,16 @@
                       <td><?=$key + 1?></td>
                       <td><?=$sanpham["ten_san_pham"]?></td>
                       <td>
-                        <img src="<?= BASE_URL . $sanpham["hinh_anh"]?>" alt="" style="width:100px" onerror="this.onerror=null; this.url='https://img.pikbest.com/origin/09/19/03/61zpIkbEsTGjk.jpg!w700wp'">
+                        <img src="<?= BASE_URL . $sanpham["hinh_anh"]?>" alt="" style="width:100px; heigth:100px;" onerror="this.onerror=null; this.url='https://img.pikbest.com/origin/09/19/03/61zpIkbEsTGjk.jpg!w700wp'">
                       </td>
                       <td><?=$sanpham["gia_san_pham"]?></td>
                       <td><?=$sanpham["so_luong"]?></td>
                       <td><?=$sanpham["ten_danh_muc"]?></td>
                       <td><?=$sanpham["trang_thai"] == 1 ? "Còn hàng" : "Hết hàng"?></td>
                       <td>
+                        <a href="<?= BASE_URL_ADMIN . "?act=chi-tiet-san-pham&id_san_pham=" . $sanpham["id"] ?>">
+                          <button class="btn btn-primary">Chi Tiết</button>
+                        </a>
                         <a href="<?= BASE_URL_ADMIN . "?act=form-sua-san-pham&id_san_pham=" . $sanpham["id"] ?>">
                           <button class="btn btn-warning">Sửa</button>
                         </a>
